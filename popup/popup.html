@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 16px;
+      background-color: #11141a; /* Dark charcoal matte */
+      color: #f0f3f5; /* Clean off-white */
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #384357; /* Sharp industrial border */
+      padding-bottom: 12px;
+    }
+    .logo-svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
+    }
+    h3 { 
+      margin: 0; 
+      color: #ffffff; 
+      font-size: 14px; 
+      letter-spacing: 2px; 
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .form-group { margin-bottom: 16px; }
+    label { 
+      font-size: 10px; 
+      font-weight: 700; 
+      color: #79879e; 
+      display: block; 
+      margin-bottom: 6px; 
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    input {
+      width: 93%; 
+      padding: 10px; 
+      background-color: #191f2b; 
+      border: 1px solid #384357; 
+      border-radius: 0px !important; /* Strictly sharp corners */
+      color: #ffffff; 
+      text-transform: uppercase; 
+      font-weight: bold; 
+      font-size: 13px; 
+      letter-spacing: 1px;
+      transition: border-color 0.15s;
+    }
+    input:focus { outline: none; border-color: #ffffff; }
+    
+    .btn {
+      width: 100%; 
+      padding: 12px; 
+      background-color: transparent; 
+      color: #ffffff;
+      border: 2px solid #ffffff; 
+      border-radius: 0px !important; /* Strictly sharp corners */
+      font-weight: 800; 
+      font-size: 11px; 
+      letter-spacing: 1.5px;
+      cursor: pointer; 
+      margin-bottom: 16px; 
+      text-transform: uppercase;
+      transition: all 0.1s ease;
+    }
+    .btn:hover { 
+      background-color: #ffffff; 
+      color: #11141a;
+    }
+    
+    .tabs { 
+      display: flex; 
+      background-color: #191f2b; 
+      margin-bottom: 16px; 
+      border: 1px solid #384357;
+    }
+    .tab {
+      flex: 1; 
+      text-align: center; 
+      padding: 10px 0; 
+      cursor: pointer; 
+      font-size: 11px; 
+      font-weight: 700; 
+      color: #79879e; 
+      letter-spacing: 1px;
+      transition: all 0.15s;
+    }
+    .tab.active { 
+      color: #ffffff; 
+      background-color: #263042; 
+      font-weight: 800;
+    }
+    
+    .status { 
+      font-size: 11px; 
+      color: #a3b1cc; 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px; 
+      text-align: center; 
+    }
+    
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      font-size: 11px; 
+      background-color: #191f2b; 
+      border: 1px solid #384357;
+    }
+    th, td { 
+      padding: 10px 12px; 
+      text-align: left; 
+      border-bottom: 1px solid #232b3a; 
+    }
+    th { 
+      background-color: #141924; 
+      color: #79879e; 
+      font-weight: 700; 
+      letter-spacing: 1px;
+      border-bottom: 2px solid #384357;
+      text-transform: uppercase;
+    }
+    .price { 
+      color: #ffffff; 
+      font-weight: 800; 
+      text-align: right; 
+      font-size: 12px;
+    }
+    .deal-row { transition: background 0.1s; }
+    .deal-row:hover { background-color: #232b3a; }
+    .deal-link { color: #ffffff; text-decoration: none; font-weight: bold; }
+    .deal-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <svg class="logo-svg" viewBox="0 0 24 24">
+      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1-1-1s-1 .17-1 1V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16z"/>
+    </svg>
+    <h3>VORTEX // SCOUT</h3>
+  </div>
+  
+  <div class="form-group">
+    <label for="originCity">Origin Airport</label>
+    <input type="text" id="originCity" placeholder="ATL" maxlength="3" value="ATL">
+  </div>
+
+  <button id="startAutomation" class="btn">Execute Search Scan</button>
+  <div id="statusUpdate" class="status">System Ready</div>
+
+  <div class="tabs">
+    <div id="tabRoundTrip" class="tab active">ROUND TRIP</div>
+    <div id="tabDirect" class="tab">ONE WAY</div>
+  </div>
+
+  <table id="dealsTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Destination</th>
+        <th>Dates</th>
+        <th style="text-align: right;">Price</th>
+      </tr>
+    </thead>
+    <tbody id="dealsBody"></tbody>
+  </table>
+
+  <script src="popup.js"></script>
+</body>
+</html>
