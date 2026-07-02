@@ -52,6 +52,6 @@
 
   chrome.runtime.sendMessage({
     action: "displayDeals",
-    data: uniqueDeals.slice(0, 12)
+    data: uniqueDeals.slice(0, 100)
   });
 })();
